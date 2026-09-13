@@ -71,6 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _taskList() {
+  
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: Column(
@@ -97,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               future: _databaseServices.getTasks(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  
                   return ListView.builder(
                     itemCount: snapshot.data?.length ?? 0,
                     itemBuilder: (context, index) {

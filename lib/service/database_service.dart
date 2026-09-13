@@ -82,29 +82,5 @@ class DatabaseServices {
     await db!.delete(_taskTableName, where: 'id=?', whereArgs: [id]);
   }
 
- Future<List<Task>?> filterdTasks({String searchQuery = ''}) async {
-  final db = await database;
-  final data = await db!.query(_taskTableName);
-
-  final list = data
-      .map(
-        (e) => Task(
-          status: e['status'] as int,
-          id: e['id'] as int,
-          content: e['content'] as String,
-        ),
-      )
-      .toList();
-
-  final query = searchQuery.trim().toLowerCase();
-
-  final filteredList = query.isEmpty
-      ? list
-      : list
-          .where((task) => task.content.trim().toLowerCase().contains(query))
-          .toList();
-
-  return filteredList;
-}
-
+ 
 }
